@@ -25,12 +25,14 @@ public class MakeGrid : MonoBehaviour
         for (int i = 0; i < WIDTH; i++){
             for (int j = 0; j < HEIGHT; j++){
                 GameObject newTile = Instantiate(tilePrefab);
+                newTile.name = i + "," + j;
                 newTile.transform.parent = gridHolder.transform;
                 newTile.transform.localPosition = new Vector2(WIDTH - i - xOffset, HEIGHT - j - yOffset);
+                //newTile.transform.localPosition = new Vector2(i - xOffset, j - yOffset);
 
                 tiles[i, j] = newTile;
                 TileScript tileScript = newTile.GetComponent<TileScript>();
-                tileScript.SetSprite(Random.Range(0, tileScript.tileSprites.Length));
+                tileScript.SetSprite(Random.Range(0, tileScript.tileColors.Length));
             }
         }
     }
