@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7588374794235175323}
   - component: {fileID: 2293716808797390172}
-  - component: {fileID: 6989528947044817078}
+  - component: {fileID: 1522911340892236182}
   m_Layer: 0
   m_Name: Tile
   m_TagString: Untagged
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6989528947044817078
+--- !u!114 &1522911340892236182
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,6 +89,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7474593646916279069}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b34616c980d7ed4cb8ea8ff8f636242, type: 3}
+  m_Script: {fileID: 11500000, guid: 24792ad89d332ad46a0de5d59ab293c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
+  tileSprites:
+  - {fileID: 21300000, guid: 04df5df6fc2e6f543b98ec69a44159d0, type: 3}
+  - {fileID: 21300000, guid: ee5366e5f6690f74fa76a9aaa79f5288, type: 3}
+  - {fileID: 21300000, guid: 4f86b899ef1b3d94388fccf8b534cef8, type: 3}
+  - {fileID: 21300000, guid: f12df2b4964c76f4b9900c54d46d5d42, type: 3}

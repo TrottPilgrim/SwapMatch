@@ -29,6 +29,8 @@ public class MakeGrid : MonoBehaviour
                 newTile.transform.localPosition = new Vector2(WIDTH - i - xOffset, HEIGHT - j - yOffset);
 
                 tiles[i, j] = newTile;
+                TileScript tileScript = newTile.GetComponent<TileScript>();
+                tileScript.SetSprite(Random.Range(0, tileScript.tileSprites.Length));
             }
         }
     }
