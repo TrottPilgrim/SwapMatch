@@ -148,7 +148,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.20784315, g: 0.20784315, b: 0.20784315, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -238,4 +238,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePrefab: {fileID: 7474593646916279069, guid: 88df388caf3cd7b40b5b38fa9b9c4ee8,
+    type: 3}
+  playerFab: {fileID: 2497258507489468004, guid: 692f57cbe1ffbd542bf899ff67386280,
     type: 3}
