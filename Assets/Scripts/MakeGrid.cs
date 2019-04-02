@@ -39,14 +39,16 @@ public class MakeGrid : MonoBehaviour
                 tileScript.SetSprite(Random.Range(0, tileScript.tileColors.Length));
             }
         }
+        int playerInitXPos = WIDTH / 2;
+        int playerInitYPos = HEIGHT / 2;
         GameObject player = Instantiate(playerFab);
         playerScript = player.GetComponent<PlayerScript>();
         player.transform.parent = gridHolder.transform;
-        Vector2 playerStartPos = tiles[2, 3].transform.localPosition;
-        Destroy(tiles[2, 3]);
+        Vector2 playerStartPos = tiles[playerInitXPos, playerInitYPos].transform.localPosition;
+        Destroy(tiles[playerInitXPos, playerInitYPos]);
         player.transform.localPosition = playerStartPos;
-        playerScript.xPos = 2;
-        playerScript.yPos = 3;
+        playerScript.xPos = playerInitXPos;
+        playerScript.yPos = playerInitYPos;
 
     }
 
@@ -66,6 +68,7 @@ public class MakeGrid : MonoBehaviour
                 tiles[playerScript.xPos + 1, playerScript.yPos] = playerScript.gameObject;
                 tiles[playerScript.xPos, playerScript.yPos] = tileToSwap;
                 playerScript.xPos++;
+                playerScript.gameObject.SendMessage("decrementTurns");
             }
         }
         else if (Input.GetKeyDown("a") || Input.GetKeyDown(KeyCode.LeftArrow)){
@@ -81,6 +84,7 @@ public class MakeGrid : MonoBehaviour
                 tiles[playerScript.xPos - 1, playerScript.yPos] = playerScript.gameObject;
                 tiles[playerScript.xPos, playerScript.yPos] = tileToSwap;
                 playerScript.xPos--;
+                playerScript.gameObject.SendMessage("decrementTurns");
             }
         }
         
@@ -97,6 +101,7 @@ public class MakeGrid : MonoBehaviour
                 tiles[playerScript.xPos, playerScript.yPos - 1] = playerScript.gameObject;
                 tiles[playerScript.xPos, playerScript.yPos] = tileToSwap;
                 playerScript.yPos--;
+                playerScript.gameObject.SendMessage("decrementTurns");
             }
         }
         else if (Input.GetKeyDown("s") || Input.GetKeyDown(KeyCode.DownArrow)){
@@ -112,7 +117,16 @@ public class MakeGrid : MonoBehaviour
                 tiles[playerScript.xPos, playerScript.yPos + 1] = playerScript.gameObject;
                 tiles[playerScript.xPos, playerScript.yPos] = tileToSwap;
                 playerScript.yPos++;
+                playerScript.gameObject.SendMessage("decrementTurns");
             }
         }
+    }
+
+    /*
+        This function checks if a line has some matching sprites
+        Inputs: initial X position, initial Y position 
+     */
+    void checkLine() {
+        
     }
 }

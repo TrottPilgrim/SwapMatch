@@ -25,4 +25,10 @@ public class PlayerScript : MonoBehaviour
         turnsRemaining = i;
         turnsText.text = "" + turnsRemaining;
     }
+
+    void decrementTurns()
+    {
+        turnsRemaining--;
+        turnsText.text = "" + turnsRemaining;
+    }
 }
