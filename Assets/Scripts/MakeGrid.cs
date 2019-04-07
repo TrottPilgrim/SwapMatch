@@ -127,6 +127,6 @@ public class MakeGrid : MonoBehaviour
         Inputs: initial X position, initial Y position 
      */
     void checkLine() {
-        
+    
     }
 }
