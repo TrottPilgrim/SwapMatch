@@ -48,7 +48,7 @@ public class MakeGrid : MonoBehaviour
         Destroy(tiles[playerInitXPos, playerInitYPos]);
         player.transform.localPosition = playerStartPos;
         playerScript.xPos = playerInitXPos;
-        playerScript.yPos = playerInitYPos;
+        playerScript.yPos = playerInitYPos; 
 
     }
 
