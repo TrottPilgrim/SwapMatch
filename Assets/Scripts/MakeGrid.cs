@@ -42,9 +42,12 @@ public class MakeGrid : MonoBehaviour
                 tileScript.SetSprite(Random.Range(0, tileScript.tileColors.Length));
             }
         }
+
+        //Initializing the player object
         int playerInitXPos = WIDTH / 2;
         int playerInitYPos = HEIGHT / 2;
         GameObject player = Instantiate(playerFab);
+        TileScript playerTile = player.GetComponent<TileScript>();
         playerScript = player.GetComponent<PlayerScript>();
         player.transform.parent = gridHolder.transform;
         Vector2 playerStartPos = tiles[playerInitXPos, playerInitYPos].transform.localPosition;
@@ -52,8 +55,8 @@ public class MakeGrid : MonoBehaviour
         player.transform.localPosition = playerStartPos;
         tiles[playerInitXPos, playerInitYPos] = player;
         playerScript.xPos = playerInitXPos;
-        playerScript.yPos = playerInitYPos; 
-
+        playerScript.yPos = playerInitYPos;
+        playerTile.SetSprite(-1);
     }
-
+    
 }

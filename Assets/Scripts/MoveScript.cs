@@ -10,7 +10,7 @@ public class MoveScript : MonoBehaviour
     void Start()
     {
         playerScript = gameObject.GetComponentInParent(typeof(PlayerScript)) as PlayerScript;
-        tiles = MakeGrid.Instance.tiles;
+        tiles = GridManager.Instance.tiles;
     }
 
     // Update is called once per frame
@@ -28,28 +28,32 @@ public class MoveScript : MonoBehaviour
         int verMove = (int) Input.GetAxisRaw("Vertical");
         if (hozMove != 0)
             verMove = 0;
-        else if (verMove != 0)
+        if (verMove != 0)
             hozMove = 0;
+        int newXPos = playerScript.xPos - hozMove;
+        int newYPos = playerScript.yPos - verMove;
 
-        //Get the tile that needs to swap with the player and save its position
-        GameObject tileToSwap = tiles[playerScript.xPos - hozMove, playerScript.yPos - verMove];
-        Vector2 newPosition = tileToSwap.transform.localPosition;
-    
-        //Swap the locations of the two objects in the game space
-        tileToSwap.transform.localPosition = playerScript.gameObject.transform.localPosition;
-        playerScript.gameObject.transform.localPosition = newPosition;
+        if (newXPos < GridManager.WIDTH &&
+            newXPos >= 0 &&
+            newYPos < GridManager.HEIGHT &&
+            newYPos >= 0)
+        {
+            //Get the tile that needs to swap with the player and save its position
+            GameObject tileToSwap = tiles[newXPos, newYPos];
+            Vector2 newPosition = tileToSwap.transform.localPosition;
+        
+            //Swap the locations of the two objects in the game space
+            tileToSwap.transform.localPosition = playerScript.gameObject.transform.localPosition;
+            playerScript.gameObject.transform.localPosition = newPosition;
 
-        //Swap the two objects in the 2D array
-        tiles[playerScript.xPos - hozMove, playerScript.yPos - verMove] = playerScript.gameObject;
-        tiles[playerScript.xPos, playerScript.yPos] = tileToSwap;
+            //Swap the two objects in the 2D array
+            tiles[newXPos, newYPos] = playerScript.gameObject;
+            tiles[playerScript.xPos, playerScript.yPos] = tileToSwap;
 
-        //Update the x position and y position of the player.
-        playerScript.xPos -= hozMove;
-        playerScript.yPos -= verMove;
-        // Debug.Log(playerScript.xPos + " " + playerScript.yPos);
-        // Debug.Log(tiles[0, 0]);
-        playerScript.gameObject.SendMessage("decrementTurns");
-
-
+            //Update the x position and y position of the player.
+            playerScript.xPos -= hozMove;
+            playerScript.yPos -= verMove;
+            playerScript.gameObject.SendMessage("decrementTurns");
+        }
     }
 }

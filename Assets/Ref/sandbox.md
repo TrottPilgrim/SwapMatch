@@ -82,6 +82,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 //Compares this tile's type with two other tiles' types
 public bool IsMatch(GameObject gameObject1, GameObject gameObject2)
 {
@@ -135,7 +136,10 @@ public TokenScript HasMatch(){
 }
 
 public bool Repopulate(){
-    return null;
+    bool repop = false;
+    for (int i = 0; i < WIDTH; i++){
+        for 
+    }
 }
 
 void Update(){
