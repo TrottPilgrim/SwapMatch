@@ -16,7 +16,7 @@ public class GridManager : MonoBehaviour
 
     GameObject gridHolder;
     PlayerScript playerScript;
-    public static float slideLerp = -1;
+    public static float slideLerp = -1f;
     public float lerpSpeed = 0.25f;
     void Start()
     {
@@ -40,7 +40,9 @@ public class GridManager : MonoBehaviour
                 tileScript.SetSprite(Random.Range(0, tileScript.tileColors.Length));
             }
         }
-
+        // while (!Repopulate() && HasMatch()){
+        //     RemoveMatches();
+        // }
         //Initializing the player object
         int playerInitXPos = WIDTH / 2;
         int playerInitYPos = HEIGHT / 2;
@@ -64,8 +66,15 @@ public class GridManager : MonoBehaviour
             RemoveMatches();
             //Repopulate();
         }
-        Repopulate();
+        else if (slideLerp >= 0)
+        {
+            slideLerp += Time.deltaTime / lerpSpeed;
+            
+            if (slideLerp >= 1)
+                slideLerp = -1;
+        }
     }
+    //Hasmatch returns an object that has a matching object vertically or horizontally
     public TileScript HasMatch(){
         for (int x = 0; x < WIDTH; x++){
             for (int y = 0; y < HEIGHT; y++){
@@ -124,6 +133,7 @@ public class GridManager : MonoBehaviour
                         if (tileScript != null){
                             tileScript.SetupSlide(new Vector2(WIDTH - x - xOffset, HEIGHT - y - yOffset));
                             tiles[x, y - 1] = null;
+                            //tiles[x, y].transform.localPosition = Vector3.Lerp(tileScript.startPosition, tileScript.destPosition, lerpSpeed);
                         }
                     }
                 }

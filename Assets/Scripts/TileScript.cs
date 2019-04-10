@@ -18,6 +18,18 @@ public class TileScript : MonoBehaviour
     public Vector3 destPosition;
     private bool inSlide = false;
 
+    void Update(){
+        if (inSlide){
+            if (GridManager.slideLerp < 0)
+            {
+                transform.localPosition = destPosition;
+                inSlide = false;
+            }else
+            {
+                transform.localPosition = Vector3.Lerp(startPosition, destPosition, GridManager.slideLerp);
+            }
+        }
+    }
     public void SetSprite(int rand){
         type = rand;
         //GetComponent<SpriteRenderer>().sprite = tileSprites[type];
@@ -35,5 +47,6 @@ public class TileScript : MonoBehaviour
         inSlide = true;
         startPosition = transform.localPosition;
         destPosition = newDestPos;
+        this.gameObject.name = this.gameObject.name + " " + destPosition.x + " " + destPosition.y + "|";
     }
 }
