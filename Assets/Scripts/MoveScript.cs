@@ -36,7 +36,9 @@ public class MoveScript : MonoBehaviour
         if (newXPos < GridManager.WIDTH &&
             newXPos >= 0 &&
             newYPos < GridManager.HEIGHT &&
-            newYPos >= 0)
+            newYPos >= 0 &&
+            (hozMove != 0 ||
+            verMove != 0))
         {
             //Get the tile that needs to swap with the player and save its position
             GameObject tileToSwap = tiles[newXPos, newYPos];
