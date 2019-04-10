@@ -62,7 +62,9 @@ public class GridManager : MonoBehaviour
     {
         if (slideLerp < 0 && !Repopulate() && HasMatch()){
             RemoveMatches();
+            //Repopulate();
         }
+        Repopulate();
     }
     public TileScript HasMatch(){
         for (int x = 0; x < WIDTH; x++){

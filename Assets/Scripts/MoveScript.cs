@@ -42,6 +42,7 @@ public class MoveScript : MonoBehaviour
         {
             //Get the tile that needs to swap with the player and save its position
             GameObject tileToSwap = tiles[newXPos, newYPos];
+            Debug.Log(tileToSwap);
             Vector2 newPosition = tileToSwap.transform.localPosition;
         
             //Swap the locations of the two objects in the game space
