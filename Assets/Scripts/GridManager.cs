@@ -19,6 +19,8 @@ public class GridManager : MonoBehaviour
     PlayerScript playerScript;
 
     public ParticleSystem explosion;
+    public ParticleSystem explosion2;
+    public ParticleSystem explosion3;
     public static float slideLerp = -1f;
     public float lerpSpeed;
     
@@ -90,6 +92,8 @@ public class GridManager : MonoBehaviour
         else if (Input.anyKeyDown){
             MovePlayer();
         }
+        else if (playerScript.turnsRemaining == 0)
+            playerScript.gameObject.SendMessage("EndGame");
     }
     //Hasmatch returns an object that has a matching object vertically or horizontally
     public TileScript HasMatch(){
@@ -112,16 +116,21 @@ public class GridManager : MonoBehaviour
             for (int y = 0; y < HEIGHT; y++){
                 TileScript temp = tiles[x, y].GetComponent<TileScript>();
                 if (temp is object){
-                    var emitParams = new ParticleSystem.EmitParams();
                     if (x < WIDTH - 2 && temp.IsMatch(tiles[x + 1, y], tiles[x + 2, y]))
                     {
                         //emit particles
-                        emitParams.position = tiles[x,y].transform.position;
-                        explosion.Emit(emitParams, 1);
-                        emitParams.position = tiles[x + 1, y].transform.position;
-                        explosion.Emit(emitParams, 1);
-                        emitParams.position = tiles[x + 2, y].transform.position;
-                        explosion.Emit(emitParams, 1);
+                        // emitParams.position = tiles[x,y].transform.position;
+                        // explosion.Emit(emitParams, 10);
+                        // emitParams.position = tiles[x + 1, y].transform.position;
+                        // explosion.Emit(emitParams, 10);
+                        // emitParams.position = tiles[x + 2, y].transform.position;
+                        // explosion.Emit(emitParams, 10);
+                        explosion.transform.position = tiles[x, y].transform.position;
+                        explosion.Play();
+                        explosion2.transform.position = tiles[x + 1, y].transform.position;
+                        explosion2.Play();
+                        explosion3.transform.position = tiles[x + 2, y].transform.position;
+                        explosion3.Play();
                         score += 3;
                         //Debug.Log("Horizontal Match " + x + " " + y);
                         Destroy(tiles[x, y]);
@@ -132,12 +141,18 @@ public class GridManager : MonoBehaviour
                     }
                     if (y < HEIGHT - 2 && temp.IsMatch(tiles[x, y + 1], tiles[x, y + 2]))
                     {   
-                        emitParams.position = tiles[x,y].transform.position;
-                        explosion.Emit(emitParams, 1);
-                        emitParams.position = tiles[x, y + 1].transform.position;
-                        explosion.Emit(emitParams, 1);
-                        emitParams.position = tiles[x, y + 2].transform.position;
-                        explosion.Emit(emitParams, 1);
+                        // emitParams.position = tiles[x,y].transform.position;
+                        // explosion.Emit(emitParams, 1);
+                        // emitParams.position = tiles[x, y + 1].transform.position;
+                        // explosion.Emit(emitParams, 1);
+                        // emitParams.position = tiles[x, y + 2].transform.position;
+                        // explosion.Emit(emitParams, 1);
+                        explosion.transform.position = tiles[x, y].transform.position;
+                        explosion.Play();
+                        explosion2.transform.position = tiles[x, y + 1].transform.position;
+                        explosion2.Play();
+                        explosion3.transform.position = tiles[x, y + 2].transform.position;
+                        explosion3.Play();
                         score += 3;
                         //Debug.Log("Vertical Match " + x + " " + y);
                         Destroy(tiles[x, y]);

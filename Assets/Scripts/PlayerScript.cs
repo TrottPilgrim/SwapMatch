@@ -15,14 +15,7 @@ public class PlayerScript : MonoBehaviour
         resetTurns(6);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (turnsRemaining == 0) {
-            Debug.Log("Game over!");
-            SceneManager.LoadScene("EndScreen");
-        }
-    }
+    
 
     public void resetTurns(int i)
     {
@@ -34,5 +27,10 @@ public class PlayerScript : MonoBehaviour
     {
         turnsRemaining--;
         turnsText.text = "" + turnsRemaining;
+    }
+
+    public void EndGame(){
+        Debug.Log("Game over!");
+        SceneManager.LoadScene("EndScreen");
     }
 }
