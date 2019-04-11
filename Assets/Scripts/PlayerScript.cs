@@ -11,6 +11,7 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // This is probably garbage
         turnsText = this.gameObject.transform.GetChild(0).gameObject.GetComponent<TextMesh>();
         resetTurns(6);
     }

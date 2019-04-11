@@ -18,7 +18,7 @@ public class GridManager : MonoBehaviour
     GameObject gridHolder;
     PlayerScript playerScript;
 
-    public ParticleSystem explosion;
+    public ParticleSystem explosion1;
     public ParticleSystem explosion2;
     public ParticleSystem explosion3;
     public static float slideLerp = -1f;
@@ -55,10 +55,12 @@ public class GridManager : MonoBehaviour
         }
         score = 0;
         //Changes tiles that are part of matches as a part of board generation. Potentially will run forever
+        //Also probably not cache friendly or something
         while (HasMatch()){
             TileScript temp = HasMatch();
             temp.SetSprite(Random.Range(0, temp.tileColors.Length));
         }
+        
         //Initializing the player object - This is a mess.
         int playerInitXPos = WIDTH / 2;
         int playerInitYPos = HEIGHT / 2;
@@ -125,8 +127,8 @@ public class GridManager : MonoBehaviour
                         // explosion.Emit(emitParams, 10);
                         // emitParams.position = tiles[x + 2, y].transform.position;
                         // explosion.Emit(emitParams, 10);
-                        explosion.transform.position = tiles[x, y].transform.position;
-                        explosion.Play();
+                        explosion1.transform.position = tiles[x, y].transform.position;
+                        explosion1.Play();
                         explosion2.transform.position = tiles[x + 1, y].transform.position;
                         explosion2.Play();
                         explosion3.transform.position = tiles[x + 2, y].transform.position;
@@ -147,8 +149,8 @@ public class GridManager : MonoBehaviour
                         // explosion.Emit(emitParams, 1);
                         // emitParams.position = tiles[x, y + 2].transform.position;
                         // explosion.Emit(emitParams, 1);
-                        explosion.transform.position = tiles[x, y].transform.position;
-                        explosion.Play();
+                        explosion1.transform.position = tiles[x, y].transform.position;
+                        explosion1.Play();
                         explosion2.transform.position = tiles[x, y + 1].transform.position;
                         explosion2.Play();
                         explosion3.transform.position = tiles[x, y + 2].transform.position;
@@ -193,6 +195,7 @@ public class GridManager : MonoBehaviour
                             tiles[x, y - 1] = null;
                             //tiles[x, y].transform.localPosition = Vector3.Lerp(tileScript.startPosition, tileScript.destPosition, lerpSpeed);
                         }
+                        //Changes the PlayerScript xPos and yPos to the position it lerps down to
                         if (tileScript.type == -1){
                             PlayerScript temp2 = tileScript.GetComponentInParent<PlayerScript>();
                             temp2.xPos = x;

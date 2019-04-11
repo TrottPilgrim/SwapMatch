@@ -470,7 +470,7 @@ MonoBehaviour:
     type: 3}
   playerFab: {fileID: 2497258507489468004, guid: 692f57cbe1ffbd542bf899ff67386280,
     type: 3}
-  explosion: {fileID: 532478533}
+  explosion1: {fileID: 532478533}
   explosion2: {fileID: 1296731263}
   explosion3: {fileID: 1877298601}
   lerpSpeed: -1
@@ -529,7 +529,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 96.70001, y: 24.600006}
+  m_AnchoredPosition: {x: 96.70007, y: 24.599976}
   m_SizeDelta: {x: 174.8, y: 32.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1574709810
