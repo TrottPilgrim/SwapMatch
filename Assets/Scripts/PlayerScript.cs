@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -17,16 +18,19 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (turnsRemaining == 0) {
+            Debug.Log("Game over!");
+            SceneManager.LoadScene("EndScreen");
+        }
     }
 
-    void resetTurns(int i)
+    public void resetTurns(int i)
     {
         turnsRemaining = i;
         turnsText.text = "" + turnsRemaining;
     }
 
-    void decrementTurns()
+    public void decrementTurns()
     {
         turnsRemaining--;
         turnsText.text = "" + turnsRemaining;

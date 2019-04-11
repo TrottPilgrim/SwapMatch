@@ -39,7 +39,9 @@ public class TileScript : MonoBehaviour
 
     public bool IsMatch(GameObject gameObject1, GameObject gameObject2){
         TileScript ts1 = gameObject1.GetComponent<TileScript>();
-        TileScript ts2 = gameObject1.GetComponent<TileScript>();
+        TileScript ts2 = gameObject2.GetComponent<TileScript>();
+        /* if (ts1 != null && ts2 != null && type == ts1.type && type == ts2.type)
+            Debug.Log(type + " " + ts1.type + " " + ts2.type); */
         return ts1 != null && ts2 != null && type == ts1.type && type == ts2.type;
     }
 
@@ -47,6 +49,6 @@ public class TileScript : MonoBehaviour
         inSlide = true;
         startPosition = transform.localPosition;
         destPosition = newDestPos;
-        this.gameObject.name = this.gameObject.name + " " + destPosition.x + " " + destPosition.y + "|";
+        //this.gameObject.name = this.gameObject.name + " " + destPosition.x + " " + destPosition.y + "|";
     }
 }

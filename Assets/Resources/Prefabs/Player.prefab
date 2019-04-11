@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2497258507489468006}
   - component: {fileID: 2497258507489468005}
   - component: {fileID: 9164501592548618111}
-  - component: {fileID: 3291409175872016631}
   - component: {fileID: 2816716487618268957}
   m_Layer: 0
   m_Name: Player
@@ -98,18 +97,6 @@ MonoBehaviour:
   turnsRemaining: 0
   xPos: 0
   yPos: 0
---- !u!114 &3291409175872016631
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2497258507489468004}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0ccbf25b19fb5647a50cd4b82bc9e00, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2816716487618268957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,6 +117,8 @@ MonoBehaviour:
   - {r: 0, g: 1, b: 0, a: 1}
   - {r: 0, g: 0, b: 1, a: 1}
   - {r: 0.65, g: 0, b: 0.96, a: 1}
+  startPosition: {x: 0, y: 0, z: 0}
+  destPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &2636552199810525290
 GameObject:
   m_ObjectHideFlags: 0
